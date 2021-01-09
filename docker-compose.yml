@@ -1,0 +1,17 @@
+# See https://docs.docker.com/compose/compose-file/
+# This one's slightly different from my others.
+version: "3"
+services:
+  postgres:
+    image: postgres:13.1
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: discover_art_dev
+
+volumes:
+  db-data:
