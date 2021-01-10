@@ -16,6 +16,7 @@ defmodule DiscoverArtWeb.Router do
   scope "/", DiscoverArtWeb do
     pipe_through :browser
 
+    get "/map", MapController, :index
     get "/*path", PageController, :index
   end
 
