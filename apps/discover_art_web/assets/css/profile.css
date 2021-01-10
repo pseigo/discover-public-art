@@ -1,7 +1,4 @@
 .profile {
-  position: relative;
-  top: 0;
-  left: 0;
   margin: 20px 0;
   padding: 20px 0;
   width: 100%;
@@ -90,9 +87,9 @@
 }
 
 .map-btn {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
 }
 
 .btn {
