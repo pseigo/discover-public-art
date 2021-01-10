@@ -76,11 +76,6 @@ const MapPage = ({history}) => {
     setShowLogin(!showLogin);
   }
 
-  useEffect(()=>{
-    fetchPOIs()
-    setVisibility('hidden')
-  }, [])
-
   return (
     <div className="map">
       { detailsVisibility !== '' && <Details record={pois.find(poi => poi.recordid === detailsVisibility)} viewDetails={test} /> }
