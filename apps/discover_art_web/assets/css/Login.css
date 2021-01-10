@@ -34,6 +34,17 @@
   text-align: center;
 }
 
+.instructionsTop {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 100%;
+  text-align: center;
+}
+
 .login-buttons {
   margin-top: 8px;
 }
