@@ -35,7 +35,7 @@ const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescript
   );
 }
 
-const MapPage = () => {
+const MapPage = ({history}) => {
   const [pois, setPois] = useState([]);
   const [show, setVisibility] = useState('show');
   const [showLogin, setShowLogin] = useState(false);
@@ -79,7 +79,7 @@ const MapPage = () => {
   return (
     <div className="map">
       { detailsVisibility !== '' && <Details record={pois.find(poi => poi.recordid === detailsVisibility)} viewDetails={test} /> }
-      { (showLogin && !me) ? <Login dismiss={toggleShowLogin}/> : null}
+      { (showLogin && !me) ? <Login dismiss={toggleShowLogin} history={history}/> : null}
       <MapContainer center={[49.258439, -123.1007]} zoom={13} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
