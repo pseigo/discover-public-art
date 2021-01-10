@@ -13,18 +13,16 @@ defmodule DiscoverArtWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # Other scopes may use custom stacks.
-  scope "/api", DiscoverArtWeb do
-    pipe_through :api
+  scope "/", DiscoverArtWeb do
+    pipe_through :browser
 
-    resources "/users", UserController
-
-    scope "/check_ins" do
-      get    "/:user_id",                CheckInController, :show
-      post   "/:user_id/:public_art_id", CheckInController, :create
-      delete "/:user_id/:public_art_id", CheckInController, :delete
-    end
+    get "/*path", PageController, :index
   end
+
+  # Other scopes may use custom stacks.
+  # scope "/api", DiscoverArtWeb do
+  #   pipe_through :api
+  # end
 
   # Enables LiveDashboard only for development
   #
@@ -40,11 +38,5 @@ defmodule DiscoverArtWeb.Router do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: DiscoverArtWeb.Telemetry
     end
-  end
-
-  scope "/", DiscoverArtWeb do
-    pipe_through :browser
-
-    get "/*path", PageController, :index
   end
 end
