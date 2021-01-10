@@ -22,8 +22,11 @@ export function UserProvider({ children }) {
           })
         }
       )
-      .then(((resp) => resp.json()))
-      .then(({data}) => {
+      .then(((resp) =>{
+        console.log(resp)
+         resp.json()
+        }))
+      .then((data) => {
         console.log(data);
         setMe(data)
         location.href = '/';
