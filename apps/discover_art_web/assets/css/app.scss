@@ -34,3 +34,9 @@
   display: block;
   margin: -1rem 0 2rem;
 }
+
+#react-app {
+  height: calc(100vh - 16px);
+  display: flex;
+  justify-content: center;
+}
