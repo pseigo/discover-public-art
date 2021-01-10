@@ -102,7 +102,7 @@ const MapPage = () => {
           })
         }
       </MapContainer>
-      <PageButton className="profile-btn" path="profile"/>
+      <PageButton className="profile-btn" src="../images/dummy-profile.jpeg" path="profile"/>
       <Button className={`btn load-btn ${show}`} onClick={() => {
         fetchPOIs()
         setVisibility('hidden')

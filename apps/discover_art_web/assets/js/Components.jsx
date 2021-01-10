@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button, Image } from 'react-bootstrap';
 import '../css/components.css';
 
-export const PageButton = ({ className, path }) => {
+export const PageButton = ({ className, src, path }) => {
   const history = useHistory();
 
   function handleClick() {
@@ -11,6 +11,6 @@ export const PageButton = ({ className, path }) => {
   }
 
   return (
-    <Image className={[className, "page-button"].join(' ')} src="../images/dummy-profile.jpeg" onClick={() => handleClick()} roundedCircle />
+    <Image className={[className, "page-button"].join(' ')} src={src} onClick={() => handleClick()} roundedCircle />
   );
 };
