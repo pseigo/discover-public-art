@@ -59,13 +59,7 @@
 
 
 .profile-btn {
-<<<<<<< HEAD
   position: fixed;
   bottom: 15px;
   right: 15px;
-=======
-  position: absolute;
-  bottom: 0;
-  right: 0;
->>>>>>> 1f8438b8c201f382000fb1c2df41fe53ed6a4816
 }
