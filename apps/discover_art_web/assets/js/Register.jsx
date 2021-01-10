@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import "../css/Login.css";
 import Button from './Button';
+import { useUser } from './UserProvider';
 
 const Register = ({history}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [name, setName] = useState('');
+  const {register} = useUser();
 
   const toLogin = () => {
     let pathname = '/';
@@ -27,7 +29,7 @@ const Register = ({history}) => {
             <Form.Control placeholder=" Display Name:" value={name} onChange={(e) => setName(e.target.value)} />
           </Form.Group>
           <Form.Group className="login-buttons">
-            <Button primary>
+            <Button onClick={() => register(email, pass, name)} primary>
               Sign up
             </Button>
             <Button onClick={ toLogin } primary>

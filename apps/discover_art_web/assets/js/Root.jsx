@@ -5,17 +5,20 @@ import Profile from './Profile';
 import Checkins from './Checkins';
 import Register from './Register';
 import MapPage from './MapPage';
+import { UserProvider } from './UserProvider';
 
 const Root = () => (
   <>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={ Login }/>
-        <Route exact path="/Profile" component={ Profile }/>
-        <Route exact path="/Checkins" component={ Checkins }/>
-        <Route path="/Register" component={ Register }/>
-        <Route exact path="/Map" component={ MapPage }/>
-      </Switch>
+      <UserProvider>
+        <Switch>
+          <Route exact path="/" component={ Login }/>
+          <Route exact path="/Profile" component={ Profile }/>
+          <Route exact path="/Checkins" component={ Checkins }/>
+          <Route path="/Register" component={ Register }/>
+          <Route exact path="/Map" component={ MapPage }/>
+        </Switch>
+      </UserProvider>
     </BrowserRouter>
   </>
 );
