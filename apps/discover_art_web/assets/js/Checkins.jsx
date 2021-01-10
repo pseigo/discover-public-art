@@ -13,7 +13,7 @@ const Checkins = () => (
       <CheckCard src="../images/dummy-poi.jpg" address="3142 W 124th Ave" date="08/23/2020" />
       <CheckCard src="../images/dummy-poi.jpg" address="3142 W 124th Ave" date="08/23/2020" />
     </div>
-    <PageButton className="profile-btn" />
+    <PageButton className="profile-btn" src="../images/dummy-profile.jpeg" path="profile"/>
   </div>
 );
 
