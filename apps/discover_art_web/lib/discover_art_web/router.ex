@@ -5,7 +5,7 @@ defmodule DiscoverArtWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug :protect_from_forgery
+    # plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
@@ -13,7 +13,6 @@ defmodule DiscoverArtWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # Other scopes may use custom stacks.
   scope "/api", DiscoverArtWeb do
     pipe_through :api
 
@@ -39,6 +38,11 @@ defmodule DiscoverArtWeb.Router do
       pipe_through :browser
       live_dashboard "/dashboard", metrics: DiscoverArtWeb.Telemetry
     end
+  end
+
+  scope "/auth", DiscoverArtWeb do
+    post "/login", AuthController, :create
+    get "/login", AuthController, :new
   end
 
   scope "/", DiscoverArtWeb do

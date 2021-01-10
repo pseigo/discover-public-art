@@ -31,4 +31,16 @@ defmodule DiscoverArt.Accounts.User do
         changeset
     end
   end
+
+  @doc """
+  Verifies the password.
+
+  If there is no user or the user doesn't have a password, we call
+  `Bcrypt.no_user_verify/0` to avoid timing attacks.
+  """
+  def valid_password?(%DiscoverArt.Accounts.User{password_hash: password_hash}, password)
+      when is_binary(password_hash) and byte_size(password) > 0 do
+    Pbkdf2.check_pass(%{password_hash: password_hash}, password)
+  end
+
 end
