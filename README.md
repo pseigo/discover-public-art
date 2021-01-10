@@ -20,7 +20,8 @@ This will start the development database and back end server. You can reach the 
 ```bash
 # Change to the root directory...
 mix deps.get && mix deps.compile
-cd apps/discover_art_web/assets && npm install
+pushd apps/discover_art_web/assets && npm install && popd
+
 docker-compose up -d
 mix ecto.create
 mix ecto.migrate
