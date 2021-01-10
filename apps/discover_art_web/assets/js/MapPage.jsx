@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Image, Button } from 'react-bootstrap';
 import { PageButton } from './Components';
+import Details from './Details';
 import '../css/Map.css';
 
-const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescription}) => {
+const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescription, POIId, viewDetails }) => {
+  const toggleDetails = useCallback(() => {
+    viewDetails(POIId);
+  }, [viewDetails])
+
   return (
     <div className="poi-popup">
       <div className="poi__header">
@@ -21,7 +26,7 @@ const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescript
         <p>{POIDescription}</p>
       </div>
       <div className="poi__options">
-        <Button className="btn">View More</Button>
+        <Button className="btn" onClick={() => toggleDetails()}>View More</Button>
         <Button className="btn">Check In</Button>
       </div>
     </div>
@@ -31,6 +36,12 @@ const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescript
 const MapPage = () => {
   const [pois, setPois] = useState([]);
   const [show, setVisibility] = useState('show');
+
+  const [detailsVisibility, setDetailsVisibility] = useState('');
+
+  const test = () => {
+    setDetailsVisibility('');
+  }
 
   const fetchPOIs = () => {
     const numRows = 5;
@@ -58,6 +69,8 @@ const MapPage = () => {
 
   return (
     <div className="map">
+      { detailsVisibility !== '' && <Details record={pois.find(poi => poi.recordid === detailsVisibility)} viewDetails={test} /> }
+
       <MapContainer center={[49.258439, -123.1007]} zoom={13} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -80,6 +93,8 @@ const MapPage = () => {
                     POIAddress={siteaddress}
                     POIDate={yearofinstallation}
                     POIDescription={descriptionofwork}
+                    POIId={id}
+                    viewDetails={setDetailsVisibility}
                   />
                 </Popup>
               </Marker>
