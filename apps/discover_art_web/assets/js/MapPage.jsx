@@ -5,8 +5,10 @@ import { Image, Button } from 'react-bootstrap';
 import { PageButton } from './Components';
 import Details from './Details';
 import '../css/Map.css';
+import { useUser } from './UserProvider';
+import Login from './Login';
 
-const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescription, POIId, viewDetails }) => {
+const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescription, POIId, viewDetails, toggleShowLogin, me }) => {
   const toggleDetails = useCallback(() => {
     viewDetails(POIId);
   }, [viewDetails])
@@ -27,17 +29,20 @@ const POIPopup = ({ POIsrc, POIName, POIArtist, POIAddress, POIDate, POIDescript
       </div>
       <div className="poi__options">
         <Button className="btn" onClick={() => toggleDetails()}>View More</Button>
-        <Button className="btn">Check In</Button>
+        <Button className="btn" onClick={() => me ? /*Do Checkin*/ null : toggleShowLogin() }>Check In</Button>
       </div>
     </div>
   );
 }
 
-const MapPage = () => {
+const MapPage = ({history}) => {
   const [pois, setPois] = useState([]);
   const [show, setVisibility] = useState('show');
+  const [showLogin, setShowLogin] = useState(false);
 
   const [detailsVisibility, setDetailsVisibility] = useState('');
+
+  const {me} = useUser();
 
   const test = () => {
     setDetailsVisibility('');
@@ -67,10 +72,14 @@ const MapPage = () => {
     });
   }
 
+  const toggleShowLogin = () => {
+    setShowLogin(!showLogin);
+  }
+
   return (
     <div className="map">
       { detailsVisibility !== '' && <Details record={pois.find(poi => poi.recordid === detailsVisibility)} viewDetails={test} /> }
-
+      { (showLogin && !me) ? <Login dismiss={toggleShowLogin} history={history}/> : null}
       <MapContainer center={[49.258439, -123.1007]} zoom={13} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -94,6 +103,8 @@ const MapPage = () => {
                     POIDate={yearofinstallation}
                     POIDescription={descriptionofwork}
                     POIId={id}
+                    me={me}
+                    toggleShowLogin={toggleShowLogin}
                     viewDetails={setDetailsVisibility}
                   />
                 </Popup>
