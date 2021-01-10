@@ -18,6 +18,7 @@ defmodule DiscoverArt.Accounts.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:password, :password_hash, :email, :display_name])
+    |> unique_constraint(:email)
     |> validate_required([:email, :display_name])
     |> put_password_hash()
   end
