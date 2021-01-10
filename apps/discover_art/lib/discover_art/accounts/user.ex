@@ -26,7 +26,7 @@ defmodule DiscoverArt.Accounts.User do
   defp put_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: pass}} ->
-        put_change(changeset, :password_hash, Argon2.add_hash(pass).password_hash)
+        put_change(changeset, :password_hash, Pbkdf2.add_hash(pass).password_hash)
       _ ->
         changeset
     end
