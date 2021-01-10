@@ -57,12 +57,3 @@ defmodule DiscoverArtWeb.UserController do
   end
 
 end
-
-
-# user_path  GET     /api/users/:id/edit     DiscoverArtWeb.UserController :edit
-# user_path  GET     /api/users/new          DiscoverArtWeb.UserController :new
-# user_path  GET     /api/users/:id          DiscoverArtWeb.UserController :show
-# user_path  POST    /api/users              DiscoverArtWeb.UserController :create
-# user_path  PATCH   /api/users/:id          DiscoverArtWeb.UserController :update
-#            PUT     /api/users/:id          DiscoverArtWeb.UserController :update
-# user_path  DELETE  /api/users/:id          DiscoverArtWeb.UserController :delete
