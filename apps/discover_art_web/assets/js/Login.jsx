@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import "../css/Login.css";
 import Button from './Button';
+import { useUser } from './UserProvider';
 
 const Login = ({history}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const {login, me} = useUser();
 
   const toRegister = (data) => {
     let pathname = '/Register';
     history.replace({pathname, state: data});
   }
 
-  return (
+  return me ? null : (
     <div className="login-container">
       <div className="instructions">Please sign in to save your progress:</div>
         <Form className="box-container">
@@ -23,7 +25,7 @@ const Login = ({history}) => {
             <Form.Control placeholder=" Password:" value={pass} onChange={(e) => setPass(e.target.value)} />
           </Form.Group>
           <Form.Group className="login-buttons">
-            <Button primary>
+            <Button onClick={ () => login(email, pass)} primary>
               Sign in
             </Button>
             <Button onClick={ () => toRegister({email, pass})} primary>
