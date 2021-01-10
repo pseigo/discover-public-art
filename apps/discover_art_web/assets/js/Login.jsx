@@ -4,7 +4,7 @@ import "../css/Login.css";
 import Button from './Button';
 import { useUser } from './UserProvider';
 
-const Login = ({history}) => {
+const Login = ({history, dismiss}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const {login, me} = useUser();
@@ -16,6 +16,7 @@ const Login = ({history}) => {
 
   return me ? null : (
     <div className="login-container">
+      <div className="close-btn" onClick={()=> dismiss ? dismiss() : null}>x</div>
       <div className="instructions">Please sign in to save your progress:</div>
         <Form className="box-container">
           <Form.Group>

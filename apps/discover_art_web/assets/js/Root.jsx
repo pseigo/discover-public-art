@@ -12,11 +12,12 @@ const Root = () => (
     <BrowserRouter>
       <UserProvider>
         <Switch>
-          <Route exact path="/" component={ Login }/>
+          <Route exact path="/Login" component={ Login }/>
           <Route exact path="/Profile" component={ Profile }/>
           <Route exact path="/Checkins" component={ Checkins }/>
           <Route path="/Register" component={ Register }/>
           <Route exact path="/Map" component={ MapPage }/>
+          <Route exact path="/" component={ MapPage }/>
         </Switch>
       </UserProvider>
     </BrowserRouter>
