@@ -1,0 +1,65 @@
+.check-ins {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 20px 0;
+  padding: 20px 0;
+  width: 100%;
+  height: calc(100vh - 40px);
+  box-sizing: border-box;
+}
+
+.page-heading {
+  font-size: 1.4rem;
+}
+
+.poi-check-ins {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.poi-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.poi__image {
+  width: 30%;
+  max-width: 100px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.poi__desc {
+  width: 70%;
+}
+
+.poi__address {
+  margin: 5px 0;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.poi__date {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgb(166, 170, 177);
+}
+
+
+
+.profile-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
