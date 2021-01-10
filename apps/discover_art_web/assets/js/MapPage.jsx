@@ -32,14 +32,14 @@ const MapPage = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker position={[51.505, -0.09]}>
-          <Popup maxWidth="250">
+          <Popup maxWidth="250" maxHeight="160">
             <POIPopup
               POIsrc="../images/dummy-poi.jpg"
-              POIName="Some Mural"
-              POIArtist="John Smith"
+              POIName="Mural"
+              POIArtist="Curtis Grahauer"
               POIAddress="3142 W 124th Ave"
               POIDate="08/23/2020"
-              POIDescription="Description of the mural. This mural was made to display art for the general public to see. Painted using a paintbrush."
+              POIDescription="The film Tidal Pool by Curtis Grahauer represents New Brighton Park in Vancouver as a point of articulation between global industry and natural adaptation. The former salt marsh next to the Ironworker’s Memorial Bridge early on had a swimming pool that was filled by the tide. When the waters became polluted by industry, a new pool was built. Waterfowl adapted and settled in the pool through the winter months. Now there is an initiative to turn the edge back into a salt marsh. The film contemplates the site as a pivotal place of contestation between the natural and industrial forces of the coastal city."
             />
           </Popup>
         </Marker>
