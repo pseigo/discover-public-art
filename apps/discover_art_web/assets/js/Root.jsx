@@ -8,7 +8,7 @@ const Root = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={ Login }/>
-        <Route exact path="/" component={ Profile }/>
+        <Route exact path="/profile" component={ Profile }/>
       </Switch>
     </BrowserRouter>
   </>
