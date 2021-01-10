@@ -3,18 +3,19 @@ import { Form } from 'react-bootstrap';
 import "../css/Login.css";
 import Button from './Button';
 
-const Login = ({history}) => {
+const Register = ({history}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [name, setName] = useState('');
 
-  const toRegister = (data) => {
-    let pathname = '/Register';
-    history.replace({pathname, state: data});
+  const toLogin = () => {
+    let pathname = '/';
+    history.replace({pathname});
   }
 
   return (
     <div className="login-container">
-      <div className="instructions">Please sign in to save your progress:</div>
+      <div className="instructionsTop">Please sign up to save your progress:</div>
         <Form className="box-container">
           <Form.Group>
             <Form.Control placeholder=" Email:" value={email} onChange={(e) => setEmail(e.target.value)} />     
@@ -22,12 +23,15 @@ const Login = ({history}) => {
           <Form.Group>
             <Form.Control placeholder=" Password:" value={pass} onChange={(e) => setPass(e.target.value)} />
           </Form.Group>
+          <Form.Group>
+            <Form.Control placeholder=" Display Name:" value={name} onChange={(e) => setName(e.target.value)} />
+          </Form.Group>
           <Form.Group className="login-buttons">
             <Button primary>
-              Sign in
-            </Button>
-            <Button onClick={ () => toRegister({email, pass})} primary>
               Sign up
+            </Button>
+            <Button onClick={ toLogin } primary>
+              Sign in
             </Button>
           </Form.Group>
         </Form>
@@ -35,4 +39,4 @@ const Login = ({history}) => {
   );
 }
 
-export default Login;
+export default Register;
