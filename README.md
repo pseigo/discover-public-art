@@ -17,10 +17,12 @@ This will start the development database and back end server. You can reach the 
 
 ### First-time setup
 
+**NOTE**: Node.js 15.5 is [not working with new Phoenix projects at the moment](https://github.com/phoenixframework/phoenix/issues/4126). Roll back to 15.2 if you get errors when running `npm install`.
+
 ```bash
 # Change to the root directory...
 mix deps.get && mix deps.compile
-pushd apps/discover_art_web/assets && npm install && popd
+cd apps/discover_art_web/assets && npm install && cd ../../../
 
 docker-compose up -d
 mix ecto.create
