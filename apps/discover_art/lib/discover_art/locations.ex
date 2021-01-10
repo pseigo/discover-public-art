@@ -55,6 +55,12 @@ defmodule DiscoverArt.Locations do
     |> Repo.insert()
   end
 
+  def maybe_create_public_art(attrs \\ %{}) do
+    %PublicArt{}
+    |> PublicArt.changeset(attrs)
+    |> Repo.insert(on_conflict: :nothing)
+  end
+
   @doc """
   Updates a public_art.
 

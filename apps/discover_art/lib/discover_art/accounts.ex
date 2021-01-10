@@ -146,6 +146,8 @@ defmodule DiscoverArt.Accounts do
   """
   def get_check_in!(id), do: Repo.get!(CheckIn, id)
 
+  def get_check_in!(user_id, public_art_id), do: Repo.get_by!(CheckIn, [user_id: user_id, public_art_id: public_art_id])
+
   @doc """
   Creates a check_in.
 
@@ -162,6 +164,12 @@ defmodule DiscoverArt.Accounts do
     %CheckIn{}
     |> CheckIn.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def maybe_create_check_in(attrs \\ %{}) do
+    %CheckIn{}
+    |> CheckIn.changeset(attrs)
+    |> Repo.insert(on_conflict: :nothing)
   end
 
   @doc """

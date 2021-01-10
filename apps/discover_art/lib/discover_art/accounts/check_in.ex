@@ -5,8 +5,8 @@ defmodule DiscoverArt.Accounts.CheckIn do
   @primary_key false
 
   schema "check_ins" do
-    belongs_to :user, DiscoverArt.Accounts.User, on_replace: :update
-    belongs_to :public_art, DiscoverArt.Locations.PublicArt, type: :string, on_replace: :update
+    belongs_to :user, DiscoverArt.Accounts.User, on_replace: :delete, primary_key: true
+    belongs_to :public_art, DiscoverArt.Locations.PublicArt, type: :string, on_replace: :delete, primary_key: true
 
     timestamps()
   end
