@@ -1,0 +1,84 @@
+.map {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 20px 0;
+    padding: 20px 0;
+    width: 100%;
+    height: calc(100vh - 40px);
+    box-sizing: border-box;
+}
+
+.poi-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    z-index: 100;
+}
+
+.poi__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 10px 0;
+}
+
+
+.poi__image {
+    width: 30%;
+    max-width: 100px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.poi__mural {
+    margin: 5px 0;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.poi__desc {
+    width: 70%;
+}
+  
+.poi__artist,
+.poi__address,
+.poi__date {
+    margin: 5px 0 !important;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgb(166, 170, 177);
+}
+
+.poi__description {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+
+.leaflet-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.leaflet-popup-content p {
+    margin: 0 !important;
+}
+
+.leaflet-popup-close-button {
+    margin: 10px;
+}
+
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}
