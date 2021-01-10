@@ -17,16 +17,12 @@ defmodule DiscoverArtWeb.Router do
   scope "/api", DiscoverArtWeb do
     pipe_through :api
 
-    get "/map", MapController, :index
     resources "/users", UserController, only: [:index, :create, :show, :update, :delete]
-
     scope "/check_ins" do
       get    "/:user_id",                CheckInController, :show
       post   "/:user_id/:public_art_id", CheckInController, :create
       delete "/:user_id/:public_art_id", CheckInController, :delete
     end
-
-    get "/*path", PageController, :index
   end
 
   # Enables LiveDashboard only for development
@@ -48,6 +44,7 @@ defmodule DiscoverArtWeb.Router do
   scope "/", DiscoverArtWeb do
     pipe_through :browser
 
+    get "/map", MapController, :index
     get "/*path", PageController, :index
   end
 end
