@@ -4,20 +4,21 @@ import "../css/Login.css";
 import Button from './Button';
 import { useUser } from './UserProvider';
 
-const Login = ({history, dismiss}) => {
+const Login = ({dismiss}) => {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const {login, me} = useUser();
+  const [name, setName] = useState('');
+  const [isRegister, setIsRegister] = useState(false);
+  const {login, register, me} = useUser();
 
-  const toRegister = (data) => {
-    let pathname = '/Register';
-    history.replace({pathname, state: data});
+  const toggleRegister = () => {
+    setIsRegister(!isRegister);
   }
 
   return me ? null : (
     <div className="login-container">
       <div className="close-btn" onClick={()=> dismiss ? dismiss() : null}>x</div>
-      <div className="instructions">Please sign in to save your progress:</div>
+      <div className={isRegister ? "instructionsTop" : "instructions"}>Please sign in to save your progress:</div>
         <Form className="box-container">
           <Form.Group>
             <Form.Control placeholder=" Email:" value={email} onChange={(e) => setEmail(e.target.value)} />     
@@ -25,11 +26,14 @@ const Login = ({history, dismiss}) => {
           <Form.Group>
             <Form.Control placeholder=" Password:" value={pass} onChange={(e) => setPass(e.target.value)} />
           </Form.Group>
+          {isRegister ? <Form.Group>
+            <Form.Control placeholder=" Display Name:" value={name} onChange={(e) => setName(e.target.value)} />
+          </Form.Group> : null}
           <Form.Group className="login-buttons">
-            <Button onClick={ () => login(email, pass)} primary>
+            <Button onClick={ () => isRegister ? toggleRegister() : login(email, pass)} primary>
               Sign in
             </Button>
-            <Button onClick={ () => toRegister({email, pass})} primary>
+            <Button onClick={ () => isRegister ?  register(email, pass, name) : toggleRegister()} primary>
               Sign up
             </Button>
           </Form.Group>
